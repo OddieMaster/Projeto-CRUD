@@ -2,6 +2,9 @@ import React from "react";
 import './App.css';
 
 function App() {
+
+  const [movieName, setMovieName] = useState('')
+  const [review, setReview] = useState('') 
   return   (
    <div className="App">
     <h1> CRUD APLLICATION</h1>

@@ -14,6 +14,18 @@ const db = mysql.createConnection({
 });
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.json());
+
+
+app.get ("/api/get", (req, res) => {
+
+const sqlSelect = "SELECT * FROM movie_schema;";
+db.query(sqlSelect, (err, result) => {
+    res.send (result);
+    });
+});  
+
+
 
 app.post("/api/insert", (req, res) =>  {
 
@@ -21,9 +33,9 @@ app.post("/api/insert", (req, res) =>  {
     const movieReview = req.body.movieReview;
 
     const sqlInsert=
-    "INSERT INSERT INTO movie_schema (movieName, movieReview) VALUES (?,?);"
+    "INSERT INTO movie_schema (movieName, movieReview) VALUES (?,?);"
     db.query(sqlInsert, [movieName, movieReview], (err, result) => {
-        console.log (result);
+        console.log (err);
         });
     });
 
